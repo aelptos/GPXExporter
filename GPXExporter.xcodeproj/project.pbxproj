@@ -94,6 +94,7 @@
 		822E5B6828D7859D00CECD4D /* UIImage+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
 		82A7E37F28E743ED0078F7C9 /* View+Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Condition.swift"; sourceTree = "<group>"; };
 		82C3586628A7E0D7007F20E8 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		82F8F02128FAD9FD00325854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +129,7 @@
 		8224C68928A66CCA008CA973 /* GPXExporter */ = {
 			isa = PBXGroup;
 			children = (
+				82F8F02128FAD9FD00325854 /* Info.plist */,
 				8224C70A28A7D197008CA973 /* Data */,
 				8224C6A628A672D3008CA973 /* Business */,
 				8224C6A328A671FC008CA973 /* UI */,
@@ -677,6 +679,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B9F9P95LAY;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GPXExporter/Info.plist;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "See InfoPlist.strings";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "See Info.plist.strings";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -708,6 +711,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B9F9P95LAY;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GPXExporter/Info.plist;
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "See InfoPlist.strings";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "See Info.plist.strings";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
