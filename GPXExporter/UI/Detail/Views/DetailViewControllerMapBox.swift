@@ -36,7 +36,12 @@ extension DetailViewControllerMapBox: DetailViewProtocol {
         setupMap()
     }
 
-    func update(with locations: [CLLocation]) {}
+    func update(with locations: [CLLocation]) {
+        guard !locations.isEmpty else { return }
+        DispatchQueue.main.async {
+            self.drawRoute(with: locations)
+        }
+    }
 
     func showExportButton() {}
 }
@@ -65,5 +70,17 @@ private extension DetailViewControllerMapBox {
             fatalError("\(mapBoxAccessTokenKey) is not defined in the Info.plist")
         }
         return accessToken
+    }
+}
+
+private extension DetailViewControllerMapBox {
+    func drawRoute(with locations: [CLLocation]) {
+        let coordinates = locations.map { $0.coordinate }
+        var annotation = PolylineAnnotation(
+            lineCoordinates: coordinates
+        )
+        annotation.lineColor = StyleColor(view.tintColor)
+        annotation.lineWidth = 3
+        mapView.annotations.makePolylineAnnotationManager().annotations = [annotation]
     }
 }
