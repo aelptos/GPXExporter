@@ -102,5 +102,26 @@ private extension DetailViewControllerMapBox {
         annotation.lineColor = StyleColor(view.tintColor)
         annotation.lineWidth = 3
         mapView.annotations.makePolylineAnnotationManager().annotations = [annotation]
+        updateCamera(for: annotation.geometry)
+    }
+
+    func updateCamera(for geometry: Geometry) {
+        let newCamera = mapView.mapboxMap.camera(
+            for: geometry,
+            padding: makePadding(),
+            bearing: 0,
+            pitch: 0
+        )
+        mapView.camera.ease(to: newCamera, duration: 0.5)
+    }
+
+    func makePadding() -> UIEdgeInsets {
+        let inset: CGFloat = 50
+        return UIEdgeInsets(
+            top: inset,
+            left: inset,
+            bottom: inset,
+            right: inset
+        )
     }
 }
