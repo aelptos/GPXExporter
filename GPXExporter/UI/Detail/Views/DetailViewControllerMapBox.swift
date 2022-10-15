@@ -27,7 +27,8 @@ final class DetailViewControllerMapBox: UIViewController {
 
         presenter.viewDidLoad()
 
-        let myResourceOptions = ResourceOptions(accessToken: "pk.eyJ1IjoiYWVscHRvcyIsImEiOiJjbDk5dmJma24xNDVpM3dtdmN4YWdpOTU3In0.2i_ZkUpJB7u4cI4aLHAoZg")
+        guard let accessToken = Bundle.main.infoDictionary?["MBXAccessToken"] as? String else { fatalError("MBXAccessToken is not defined") }
+        let myResourceOptions = ResourceOptions(accessToken: accessToken)
         let myMapInitOptions = MapInitOptions(resourceOptions: myResourceOptions)
         mapView = MapView(frame: view.bounds, mapInitOptions: myMapInitOptions)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
