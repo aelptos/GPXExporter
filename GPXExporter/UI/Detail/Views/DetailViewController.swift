@@ -7,12 +7,6 @@ import MapKit
 import HealthKit
 import SwiftUI
 
-protocol DetailViewProtocol: AnyObject {
-    func prepareView(with workout: HKWorkout)
-    func update(with locations: [CLLocation])
-    func showExportButton()
-}
-
 final class DetailViewController: UIViewController {
     private let presenter: DetailPresenterProtocol
     private let locationManager = CLLocationManager()
