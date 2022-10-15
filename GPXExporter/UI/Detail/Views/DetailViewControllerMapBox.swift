@@ -69,6 +69,15 @@ private extension DetailViewControllerMapBox {
     func setupNavigation() {
         title = "detail.title".localized
         navigationItem.largeTitleDisplayMode = .never
+        resetNavigationBarAppearance()
+    }
+    
+    func resetNavigationBarAppearance() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithDefaultBackground()
+        navigationItem.scrollEdgeAppearance = navigationBarAppearance
+        navigationItem.standardAppearance = navigationBarAppearance
+        navigationItem.compactAppearance = navigationBarAppearance
     }
 
     @objc func onShareButtonTap() {
