@@ -103,6 +103,7 @@ private extension DetailViewControllerMapBox {
             .flexibleHeight
         ]
         mapView.ornaments.options.scaleBar.visibility = .hidden
+        mapView.location.options.puckType = .puck2D()
         view.addSubview(mapView)
     }
 
