@@ -81,6 +81,7 @@ private extension DetailViewControllerMapBox {
             .flexibleWidth,
             .flexibleHeight
         ]
+        mapView.ornaments.options.scaleBar.visibility = .hidden
         view.addSubview(mapView)
     }
 
