@@ -71,7 +71,7 @@ private extension DetailViewControllerMapBox {
         navigationItem.largeTitleDisplayMode = .never
         resetNavigationBarAppearance()
     }
-    
+
     func resetNavigationBarAppearance() {
         let navigationBarAppearance = UINavigationBarAppearance()
         navigationBarAppearance.configureWithDefaultBackground()
@@ -115,7 +115,7 @@ private extension DetailViewControllerMapBox {
 
     func getStyle() -> StyleURI {
         if traitCollection.userInterfaceStyle == .light {
-            return .light
+            return .streets
         }
         return .dark
     }
