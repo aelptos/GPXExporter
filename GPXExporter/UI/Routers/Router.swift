@@ -29,7 +29,7 @@ extension Router: RouterProtocol {
             healthKitHelper: healtKitHelper,
             workout: workout
         )
-        let controller = DetailViewController(
+        let controller = DetailViewControllerMapBox(
             presenter: presenter
         )
         presenter.view = controller

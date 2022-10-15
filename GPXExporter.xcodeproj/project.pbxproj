@@ -48,6 +48,7 @@
 		822E5B6928D7859D00CECD4D /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822E5B6828D7859D00CECD4D /* UIImage+Color.swift */; };
 		82A7E38028E743ED0078F7C9 /* View+Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7E37F28E743ED0078F7C9 /* View+Condition.swift */; };
 		82C3586728A7E0D7007F20E8 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C3586628A7E0D7007F20E8 /* InfoView.swift */; };
+		82F8F02328FADB1B00325854 /* DetailViewControllerMapBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F02228FADB1B00325854 /* DetailViewControllerMapBox.swift */; };
 		82F8F02528FADB2D00325854 /* DetailViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8F02428FADB2D00325854 /* DetailViewProtocol.swift */; };
 		DB54B6CC9CCB97537094271A /* Pods_GPXExporter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10375414CFC98B8F816D0673 /* Pods_GPXExporter.framework */; };
 /* End PBXBuildFile section */
@@ -99,6 +100,7 @@
 		82A7E37F28E743ED0078F7C9 /* View+Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Condition.swift"; sourceTree = "<group>"; };
 		82C3586628A7E0D7007F20E8 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		82F8F02128FAD9FD00325854 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		82F8F02228FADB1B00325854 /* DetailViewControllerMapBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerMapBox.swift; sourceTree = "<group>"; };
 		82F8F02428FADB2D00325854 /* DetailViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewProtocol.swift; sourceTree = "<group>"; };
 		EECED4F5A0193A0E19659A72 /* Pods-GPXExporter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPXExporter.release.xcconfig"; path = "Target Support Files/Pods-GPXExporter/Pods-GPXExporter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				8224C6BA28A68DB2008CA973 /* DetailViewController.swift */,
+				82F8F02228FADB1B00325854 /* DetailViewControllerMapBox.swift */,
 				82F8F02428FADB2D00325854 /* DetailViewProtocol.swift */,
 			);
 			path = Views;
@@ -554,6 +557,7 @@
 				8224C6F528A6BB4F008CA973 /* Formatters.swift in Sources */,
 				8224C6C328A69009008CA973 /* HomeViewModel.swift in Sources */,
 				8224C6E928A6A7D5008CA973 /* TableSourceRow.swift in Sources */,
+				82F8F02328FADB1B00325854 /* DetailViewControllerMapBox.swift in Sources */,
 				8224C6CC28A69BA5008CA973 /* LoadingTableViewCell.swift in Sources */,
 				8224C6E128A6A241008CA973 /* MessageCellView.swift in Sources */,
 				8224C70428A7B07D008CA973 /* WorkoutView.swift in Sources */,
