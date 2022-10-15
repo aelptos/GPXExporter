@@ -6,6 +6,8 @@ import UIKit
 import HealthKit
 import MapboxMaps
 
+fileprivate let mapBoxAccessTokenKey = "MBXAccessToken"
+
 final class DetailViewControllerMapBox: UIViewController {
     private let presenter: DetailPresenterProtocol
     private var mapView: MapView!
@@ -26,21 +28,42 @@ final class DetailViewControllerMapBox: UIViewController {
         super.viewDidLoad()
 
         presenter.viewDidLoad()
-
-        guard let accessToken = Bundle.main.infoDictionary?["MBXAccessToken"] as? String else { fatalError("MBXAccessToken is not defined") }
-        let myResourceOptions = ResourceOptions(accessToken: accessToken)
-        let myMapInitOptions = MapInitOptions(resourceOptions: myResourceOptions)
-        mapView = MapView(frame: view.bounds, mapInitOptions: myMapInitOptions)
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-
-        view.addSubview(mapView)
     }
 }
 
 extension DetailViewControllerMapBox: DetailViewProtocol {
-    func prepareView(with workout: HKWorkout) {}
+    func prepareView(with workout: HKWorkout) {
+        setupMap()
+    }
 
     func update(with locations: [CLLocation]) {}
 
     func showExportButton() {}
+}
+
+private extension DetailViewControllerMapBox {
+    func setupMap() {
+        let resourceOptions = ResourceOptions(
+            accessToken: getAccessToken()
+        )
+        let mapInitOptions = MapInitOptions(
+            resourceOptions: resourceOptions
+        )
+        mapView = MapView(
+            frame: view.bounds,
+            mapInitOptions: mapInitOptions
+        )
+        mapView.autoresizingMask = [
+            .flexibleWidth,
+            .flexibleHeight
+        ]
+        view.addSubview(mapView)
+    }
+
+    func getAccessToken() -> String {
+        guard let accessToken = Bundle.main.infoDictionary?[mapBoxAccessTokenKey] as? String else {
+            fatalError("\(mapBoxAccessTokenKey) is not defined in the Info.plist")
+        }
+        return accessToken
+    }
 }
