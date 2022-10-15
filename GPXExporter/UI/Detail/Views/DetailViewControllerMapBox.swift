@@ -54,13 +54,25 @@ extension DetailViewControllerMapBox: DetailViewProtocol {
         }
     }
 
-    func showExportButton() {}
+    func showExportButton() {
+        DispatchQueue.main.async {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                barButtonSystemItem: .action,
+                target: self,
+                action: #selector(self.onShareButtonTap)
+            )
+        }
+    }
 }
 
 private extension DetailViewControllerMapBox {
     func setupNavigation() {
         title = "detail.title".localized
         navigationItem.largeTitleDisplayMode = .never
+    }
+
+    @objc func onShareButtonTap() {
+        presenter.didRequestShare()
     }
 }
 
