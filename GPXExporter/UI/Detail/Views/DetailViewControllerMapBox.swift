@@ -42,6 +42,7 @@ final class DetailViewControllerMapBox: UIViewController {
 
 extension DetailViewControllerMapBox: DetailViewProtocol {
     func prepareView(with workout: HKWorkout) {
+        setupNavigation()
         setupMap()
         setupBanner(with: workout)
     }
@@ -54,6 +55,13 @@ extension DetailViewControllerMapBox: DetailViewProtocol {
     }
 
     func showExportButton() {}
+}
+
+private extension DetailViewControllerMapBox {
+    func setupNavigation() {
+        title = "detail.title".localized
+        navigationItem.largeTitleDisplayMode = .never
+    }
 }
 
 private extension DetailViewControllerMapBox {
