@@ -5,6 +5,7 @@
 import UIKit
 import HealthKit
 import MapboxMaps
+import SwiftUI
 
 fileprivate let mapBoxAccessTokenKey = "MBXAccessToken"
 
@@ -42,6 +43,7 @@ final class DetailViewControllerMapBox: UIViewController {
 extension DetailViewControllerMapBox: DetailViewProtocol {
     func prepareView(with workout: HKWorkout) {
         setupMap()
+        setupBanner(with: workout)
     }
 
     func update(with locations: [CLLocation]) {
@@ -123,5 +125,21 @@ private extension DetailViewControllerMapBox {
             bottom: inset,
             right: inset
         )
+    }
+}
+
+private extension DetailViewControllerMapBox {
+    func setupBanner(with workout: HKWorkout) {
+        let host = UIHostingController(rootView: WorkoutView(workout: workout, vibrancy: true))
+        addChild(host)
+        view.addSubview(host.view)
+        host.view.translatesAutoresizingMaskIntoConstraints = false
+        host.view.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
+        host.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40).isActive = true
+        host.view.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
+        host.didMove(toParent: self)
+        host.view.layer.cornerRadius = 16
+        host.view.layer.masksToBounds = true
+        host.view.backgroundColor = .clear
     }
 }
