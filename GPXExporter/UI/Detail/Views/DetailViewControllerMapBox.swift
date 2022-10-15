@@ -136,6 +136,7 @@ private extension DetailViewControllerMapBox {
         annotation.lineWidth = 3
         mapView.annotations.makePolylineAnnotationManager().annotations = [annotation]
         updateCamera(for: annotation.geometry)
+        addPoints(for: locations)
     }
 
     func updateCamera(for geometry: Geometry) {
@@ -156,6 +157,43 @@ private extension DetailViewControllerMapBox {
             bottom: inset,
             right: inset
         )
+    }
+
+    func addPoints(for locations: [CLLocation]) {
+        guard locations.count >= 2 else { return }
+        try! mapView.mapboxMap.style.addImage(
+            UIImage(systemName: "flag.checkered")!,
+            id: "start_icon",
+            sdf: true
+        )
+        try! mapView.mapboxMap.style.addImage(
+            UIImage(systemName: "flag.checkered.2.crossed")!,
+            id: "finish_icon",
+            sdf: true
+        )
+        let annotations = [
+            startPointAnnotation(with: locations.first),
+            endPointAnnotation(with: locations.last)
+        ].compactMap { $0 }
+        mapView.annotations.makePointAnnotationManager().annotations = annotations
+    }
+
+    func startPointAnnotation(with location: CLLocation?) -> PointAnnotation? {
+        guard let coordinates = location?.coordinate else { return nil }
+        var annotation = PointAnnotation(coordinate: coordinates)
+        annotation.iconImage = "start_icon"
+        annotation.iconAnchor = .bottom
+        annotation.iconColor = StyleColor(UIColor.green)
+        return annotation
+    }
+
+    func endPointAnnotation(with location: CLLocation?) -> PointAnnotation? {
+        guard let coordinates = location?.coordinate else { return nil }
+        var annotation = PointAnnotation(coordinate: coordinates)
+        annotation.iconImage = "finish_icon"
+        annotation.iconAnchor = .bottom
+        annotation.iconColor = StyleColor(UIColor.red)
+        return annotation
     }
 }
 
