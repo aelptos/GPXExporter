@@ -29,6 +29,14 @@ final class DetailViewControllerMapBox: UIViewController {
 
         presenter.viewDidLoad()
     }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            refreshMapStyle()
+        }
+    }
 }
 
 extension DetailViewControllerMapBox: DetailViewProtocol {
@@ -52,7 +60,8 @@ private extension DetailViewControllerMapBox {
             accessToken: getAccessToken()
         )
         let mapInitOptions = MapInitOptions(
-            resourceOptions: resourceOptions
+            resourceOptions: resourceOptions,
+            styleURI: getStyle()
         )
         mapView = MapView(
             frame: view.bounds,
@@ -70,6 +79,17 @@ private extension DetailViewControllerMapBox {
             fatalError("\(mapBoxAccessTokenKey) is not defined in the Info.plist")
         }
         return accessToken
+    }
+
+    func getStyle() -> StyleURI {
+        if traitCollection.userInterfaceStyle == .light {
+            return .light
+        }
+        return .dark
+    }
+
+    func refreshMapStyle() {
+        mapView.mapboxMap.loadStyleURI(getStyle())
     }
 }
 
